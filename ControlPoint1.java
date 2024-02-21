@@ -13,6 +13,29 @@ public class ControlPoint1 {
         return (num / 100) + (num % 10) + (num / 10) % 10;
     }
 
+    public static int minLengthOfStrs(String[] strs){
+        int min = 1000000;
+        for (int i = 0; i < strs.length - 1; i++) {
+            min = Math.min(min, Math.min(strs[i].length(),strs[i+1].length()));
+        }
+        return min;
+    }
+    public static String checkPref(String[] strs){
+        int maxSubsLength = minLengthOfStrs(strs);
+        String check = "";
+        for (int substrInd = 0; substrInd < maxSubsLength; substrInd++) {
+            for (int word = 0; word < strs.length - 1; word++) {
+                if(strs[word].substring( 0, substrInd).equals( strs[word+1].substring( 0, substrInd)))
+                    check = strs[word].substring( 0, substrInd);
+                else {
+                    if (word != 0)
+                        check = check.substring(0,substrInd -1);
+                    break;
+                }
+            }
+        }
+        return check;
+    }
     public static void main(String[] args){
 //1)	Учитывая отсортированный массив различных целых чисел и целевое значение, верните индекс, если цель найдена.
 // Если нет, верните индекс там, где он был бы, если бы он был вставлен по порядку.
@@ -29,7 +52,10 @@ public class ControlPoint1 {
         }
         System.out.println("--------------------------");
 // 3)	Напишите метод для поиска самой длинной строки общего префикса среди массива строк. Если общего префикса нет, верните пустую строку "".
-
+        String[] strs = {"flower","flow","flight"};
+        String[] strs2 = {"dog","racecar","car"};
+        System.out.println(checkPref(strs));
+        System.out.println(checkPref(strs2));
 
 
 
