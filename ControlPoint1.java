@@ -23,19 +23,24 @@ public class ControlPoint1 {
     public static String checkPref(String[] strs){
         int maxSubsLength = minLengthOfStrs(strs);
         String check = "";
+        String result = "";
+        boolean bFlag = true;
         for (int substrInd = 0; substrInd < maxSubsLength; substrInd++) {
             for (int word = 0; word < strs.length - 1; word++) {
                 if(strs[word].substring( 0, substrInd).equals( strs[word+1].substring( 0, substrInd)))
                     check = strs[word].substring( 0, substrInd);
                 else {
                     if (word != 0)
-                        check = check.substring(0,substrInd -1);
+                        bFlag = false;
                     break;
                 }
             }
+            if (bFlag)
+                result = check;
         }
-        return check;
+        return result;
     }
+
     public static void main(String[] args){
 //1)	Учитывая отсортированный массив различных целых чисел и целевое значение, верните индекс, если цель найдена.
 // Если нет, верните индекс там, где он был бы, если бы он был вставлен по порядку.
@@ -56,8 +61,7 @@ public class ControlPoint1 {
         String[] strs2 = {"dog","racecar","car"};
         System.out.println(checkPref(strs));
         System.out.println(checkPref(strs2));
-
-
+        System.out.println(checkPref(new String[]{"aass","aads","sss","asdsds"}));
 
     }
 }
