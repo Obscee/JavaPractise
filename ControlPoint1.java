@@ -25,7 +25,7 @@ public class ControlPoint1 {
         String check = "";
         String result = "";
         boolean bFlag = true;
-        for (int substrInd = 0; substrInd < maxSubsLength; substrInd++) {
+        for (int substrInd = 0; substrInd <= maxSubsLength; substrInd++) {
             for (int word = 0; word < strs.length - 1; word++) {
                 if(strs[word].substring( 0, substrInd).equals( strs[word+1].substring( 0, substrInd)))
                     check = strs[word].substring( 0, substrInd);
@@ -61,7 +61,7 @@ public class ControlPoint1 {
         String[] strs2 = {"dog","racecar","car"};
         System.out.println(checkPref(strs));
         System.out.println(checkPref(strs2));
-        System.out.println(checkPref(new String[]{"aass","aads","sss","asdsds"}));
+        System.out.println(checkPref(new String[]{"saass","saasds","saas","saasdsds"}));
 
     }
 }
