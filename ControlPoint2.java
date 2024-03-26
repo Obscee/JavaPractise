@@ -72,9 +72,22 @@ public class ControlPoint2 {
 
     public int frequencyАnalysis(int[] nums){
         // коллекция - ключ-число, вернуть наибольшее
+        char[] names= new char[nums.length];
+        int[] value = new int[nums.length];
+        for (int i = 0; i < value.length; i++) {
+            value[i] = 0;
+        }
+        for (int index = 0; index < nums.length; index++) {
+            if
+        }
     }
-    public boolean exponentChecker(int num, int checkableBase){
+    public boolean Checker(int num){
         // мат.log[checkableBase](num)
+        for (int i = 0; i < num; i++) {
+            if (num == Math.pow(2,i))
+                return true;
+        return false;
+        }
     }
 
     public int[] lostNums(int[] nums) {
