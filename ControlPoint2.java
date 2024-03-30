@@ -58,39 +58,55 @@
 //Вывод: [2]
 
 
-
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControlPoint2 {
 
-    public int substringInd(){
-
+    public static int substringInd(){
+        return  0;
     }
 
-    public int[][] pascal(int numRows){
+    public static int[][] pascal(int numRows){
         //идея - создаем [numRows][1-> numRows], 0 и ([][].length-1) индексы = 1, остальные = сумме соседних индексов из массивы выше (рекусрсия???)
+        int[][] ans = {{1,5,6},{2,6}};
+        return  ans;
+
     }
 
-    public int frequencyАnalysis(int[] nums){
+
+    public static int analysis(int[] nums){
         // коллекция - ключ-число, вернуть наибольшее
-        char[] names= new char[nums.length];
-        int[] value = new int[nums.length];
-        for (int i = 0; i < value.length; i++) {
-            value[i] = 0;
+        Map<Integer,Integer> dictionary = new HashMap<Integer, Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (dictionary.containsKey(nums[i])){
+                Integer count = dictionary.get(nums[i]);
+                dictionary.replace(nums[i], count, count+1);
+            }
+            else
+                dictionary.put(nums[i],1);
         }
-        for (int index = 0; index < nums.length; index++) {
-            if
+        int max = 0;
+        int maxKey = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (max < dictionary.get(nums[i])) {
+                max = dictionary.get(nums[i]);
+                maxKey = nums[i];
+            }
         }
-    }
-    public boolean Checker(int num){
+        return  maxKey;
+        }
+
+    public static boolean Checker(int num){
         // мат.log[checkableBase](num)
         for (int i = 0; i < num; i++) {
             if (num == Math.pow(2,i))
                 return true;
-        return false;
         }
+        return false;
     }
 
-    public int[] lostNums(int[] nums) {
+    public static int[] lostNums(int[] nums) {
         //идея - аррейсим, сортим, бинари серчим, если не находим - кидаем вы выходной массив, получаем n*log
         int[] lost = new int[nums.length-1];
         for (int i = 0; i < nums.length; i++) {
@@ -99,6 +115,13 @@ public class ControlPoint2 {
 
 
         return lost;
+    }
+    public static void main(String[] args){
+
+
+        // 3) ЭЛЕМЕНТ БОЛЬШИНСТВА.
+        int[] test = {3,2,3};
+        System.out.println( analysis( test ) );
     }
 }
 
