@@ -68,12 +68,31 @@ public class ControlPoint2 {
         return  0;
     }
 
-    public static int[][] pascal(int numRows){
-        //идея - создаем [numRows][1-> numRows], 0 и ([][].length-1) индексы = 1, остальные = сумме соседних индексов из массивы выше (рекусрсия???)
-        int[][] ans = {{1,5,6},{2,6}};
-        return  ans;
-
-    }
+//    public static  String pascal(int numRows){
+//        if (numRows == 1) {
+//            int[][] preA = {{1}};
+//            return Arrays.deepToString(preA);
+//        }
+//        if (numRows == 2){
+//            int[][] preA ={{1}, {1, 1}};
+//            return Arrays.deepToString(preA);
+//        }
+//
+//        //идея - создаем [numRows][1-> numRows], 0 и ([][].length-1) индексы = 1, остальные = сумме соседних индексов из массивы выше (рекусрсия???)
+//        ArrayList<ArrayList<Integer>> answer = new ArrayList<>();
+//        //answer.add(new ArrayList[]{1});
+//        //answer.add(new ArrayList[]{1, 1});
+//        for (int i = 0; i < numRows; i++) {
+//            for (int j = 0; j < numRows; j++) {
+//                if((j == 0) || (j == answer.size() -1)){
+//                    answer.get(i).add(1);
+//                }
+//            }
+//        }
+//        int[][] ans = {{1,5,6},{2,6}};
+//        return  Arrays.deepToString(ans);
+//
+//    }
 
 
     public static int analysis(int[] nums){
@@ -116,12 +135,13 @@ public class ControlPoint2 {
                 lostNums.add(i);
             }
         }
-
-
         return lostNums;
     }
-    public static void main(String[] args){
 
+    public static void main(String[] args){
+        // 1) НАЙДИТЕ ИНДЕКС ПЕРВОГО ВХОЖДЕНИЯ В СТРОКУ.
+        // 2) ТРЕУГОЛЬНИК ПАСКАЛЯ
+        //System.out.println(pascal(1));
 
         // 3) ЭЛЕМЕНТ БОЛЬШИНСТВА.
         int[] test = {3,2,3};
@@ -136,6 +156,7 @@ public class ControlPoint2 {
         int[] lostTest2 ={1,1};
         System.out.println(lostNums( lostTest1 ));
         System.out.println(lostNums( lostTest2 ));
+
 
     }
 }
