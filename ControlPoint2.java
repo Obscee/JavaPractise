@@ -57,7 +57,8 @@
 //Ввод: nums = [1,1]
 //Вывод: [2]
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,7 +98,7 @@ public class ControlPoint2 {
         return  maxKey;
         }
 
-    public static boolean Checker(int num){
+    public static boolean checker(int num){
         // мат.log[checkableBase](num)
         for (int i = 0; i < num; i++) {
             if (num == Math.pow(2,i))
@@ -106,15 +107,18 @@ public class ControlPoint2 {
         return false;
     }
 
-    public static int[] lostNums(int[] nums) {
-        //идея - аррейсим, сортим, бинари серчим, если не находим - кидаем вы выходной массив, получаем n*log
-        int[] lost = new int[nums.length-1];
-        for (int i = 0; i < nums.length; i++) {
-
+    public static ArrayList<Integer> lostNums(int[] nums) {
+        //идея - аррейсим, сортим, бинари серчим, если не находим - кидаем в выходной массив, получаем n*log
+        Arrays.sort(nums);
+        ArrayList<Integer> lostNums = new ArrayList<>();
+        for (int i = 1; i <= nums.length; i++) {
+            if( Arrays.binarySearch(nums,i) < 0){
+                lostNums.add(i);
+            }
         }
 
 
-        return lost;
+        return lostNums;
     }
     public static void main(String[] args){
 
@@ -122,6 +126,17 @@ public class ControlPoint2 {
         // 3) ЭЛЕМЕНТ БОЛЬШИНСТВА.
         int[] test = {3,2,3};
         System.out.println( analysis( test ) );
+        // 4)СТЕПЕНЬ ДВОЙКИ
+        int one = 128;
+        int two = 129;
+        System.out.println(checker(one));
+        System.out.println(checker(two));
+        // 5)ПРОПАВШИЕ ЧИСЛА
+        int[] lostTest1 ={4,3,2,7,8,2,3,1};
+        int[] lostTest2 ={1,1};
+        System.out.println(lostNums( lostTest1 ));
+        System.out.println(lostNums( lostTest2 ));
+
     }
 }
 
